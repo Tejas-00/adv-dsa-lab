@@ -16,17 +16,18 @@ class Node {
 };
 
 class BST {
-    Node *root = new Node;
     Node *key;
+    int orderedList[20];
+    int listIndex = 0;
     public:
-        void getRoot(int data) {
+        void getRoot(Node *root, int data) {
             root->value = data;
             root->left = NULL;
             root->right = NULL;
             cout<< "root is set to " << data << endl;
         }
 
-        void insertNewNode(int data) {
+        void insertNewNode(Node *root, int data) {
             key = root;
             Node *newNode = new Node;
             while (true) {
@@ -55,7 +56,7 @@ class BST {
             }
         }
 
-        void longestPath() {
+        void longestPath(Node *root) {
             int pathLenL = 0;
             int pathLenR = 0;
             key = root;
@@ -88,7 +89,7 @@ class BST {
             }
         }
 
-        void minValue() {
+        void minValue(Node *root) {
             key = root;
             while (key->left != NULL) {
                 key = key->left;
@@ -96,7 +97,7 @@ class BST {
             cout<<endl<< "Minimum value: " << key->value << endl;
         }
 
-        void searchNode(int data) {
+        void searchNode(Node *root, int data) {
             key = root;
             while (true) {         
                 if (data > key->value) {
@@ -120,28 +121,55 @@ class BST {
             }
         }
 
-        void acsOrder() {
-            int ascArray[12];
-            key = root;
+        void inorderTraversal(Node *root) {
+            if (root == nullptr) {
+                return;
+            }
+
+            inorderTraversal(root->left);
+            
+            orderedList[listIndex] = root->value;
+            listIndex++;
+            
+            inorderTraversal(root->right);
+        }
+
+        void AscDesc() {
+            cout<< endl << "Ascending order" << endl;
+            for (int i = 0; i < listIndex; i++) {
+                cout<< orderedList[i] << " ";
+            }
+
+            cout<< endl << "Descending order" << endl;
+            for (int i = listIndex - 1; i >= 0; i--) {
+                cout<< orderedList[i] << " ";
+            }
         }
 };
 
 int main() {
+    Node *root = new Node;
+
     BST obj;
-    obj.getRoot(38);
 
-    obj.insertNewNode(45);
-    obj.insertNewNode(36);
-    obj.insertNewNode(67);
-    obj.insertNewNode(21);
-    obj.insertNewNode(33);
-    obj.insertNewNode(9);
+    obj.getRoot(root, 38);
 
-    obj.longestPath();
+    obj.insertNewNode(root, 45);
+    obj.insertNewNode(root, 36);
+    obj.insertNewNode(root, 67);
+    obj.insertNewNode(root, 21);
+    obj.insertNewNode(root, 33);
+    obj.insertNewNode(root, 9);
 
-    obj.minValue();
+    obj.longestPath(root);
 
-    obj.searchNode(67);
+    obj.minValue(root);
+
+    obj.searchNode(root, 67);
+
+    obj.inorderTraversal(root);
+
+    obj.AscDesc();
 
     return 0;
 }
