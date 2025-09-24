@@ -1,7 +1,7 @@
 # adv-dsa-lab
 👋 Welcome to Tejas' GitHub repository for 4th-semester lab assignments! 📚
 <br><br>
-Here's your chance to peek into my coding journey as I tackle exciting challenges and dive deep into the world of computer science. 💻
+Here's your chance to take a peek into my coding journey as I tackle exciting challenges and delve deep into the world of computer science. 💻
 <br><br>
 Ready to explore? Just click on the folders to uncover a treasure trove of assignments covering everything from algorithms to data structures and more! 📁💡
 <br><br>
